@@ -47,14 +47,17 @@ class Route {
         }
         if (!empty($this->pattern))
         {
-            preg_match('@^' . $this->pattern . '$@', $req->getUri(), $match);
-            if (count($match) > 0)
-            {
-                print_r($match);
+            preg_match('@^'.$this->pattern.'$@', $req->getUri(), $match);
+            if (count($match) > 0) {
+                foreach ($match as $key => $value) {
+                    if (is_string($key)) {
+                        $_GET[$key] = $value;
+                    }
+                }
+                return true;
             }
         }
         return false;
-
     }
 
     public function getController(): string

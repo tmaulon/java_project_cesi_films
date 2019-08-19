@@ -23,6 +23,7 @@ class DB{
 
         try{
             $this->dbh = new PDO($dsn, MYSQL_USER, MYSQL_PWD, $options);
+            $this->dbh->exec("SET NAMES 'utf8'");
         }
         catch (PDOException $e){
             $this->error = $e->getMessage();

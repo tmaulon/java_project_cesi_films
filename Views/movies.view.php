@@ -10,24 +10,48 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Titre du film</th>
+                <th scope="col">Titre original du film</th>
+                <th scope="col">Titre français du film</th>
                 <th scope="col">Année de production</th>
+                <th scope="col">Directeur</th>
+                <th scope="col">Score</th>
+                <th scope="col">
+                    <a href="/movies/create" title="Ajouter un film">
+                        <i class="fas fa-plus-circle"></i>
+                    </a>
+                </th>
             </tr>
         </thead>
         <tbody>
         <?php
-        foreach ($movies as $key => $value): ?>
+        foreach ($movies as $key => $value):?>
             <tr scope="row">
                 <th>
-                     <?=$value['id']?>
+                     <?=$value->getId()?>
                 </th>
                 <td>
-                    <a href="/movies/<?=$value['id']?>" title="Voir la fiche du film <?=$value['title']?>">
-                        <?=$value['title']?>
+                    <a href="/movies/<?=$value->getId()?>" title="Voir la fiche du film <?=$value->getTitle()?>">
+                        <?=$value->getTitle()?>
                     </a>
                 </td>
                 <td>
-                    <?=$value['year']?>
+                    <a href="/movies/<?=$value->getId()?>" title="Voir la fiche du film <?=$value->getTitleFr()?>">
+                        <?=$value->getTitleFr()?>
+                    </a>
+                </td>
+                <td>
+                    <?=$value->getYear()?>
+                </td>
+                <td>
+                    <?=$value->getDirectorId()?>
+                </td>
+                <td>
+                    <?=$value->getScore()?>
+                </td>
+                <td>
+                    <a href="/movies/update/<?=$value->getId()?>" title="Modifier la fiche du film <?=$value->getTitleFr()?>">
+                        <i class="fas fa-edit"></i>
+                    </a>
                 </td>
             </tr>
         <?php endforeach; ?>

@@ -13,7 +13,11 @@ class Site
 
         Router::addRoute(new Route('GET', '/', 'Home', 'show'));
         Router::addRoute(new Route('GET', '/movies', 'Movie', 'list'));
-//        Router::addRoute(new Route('GET', '/movies/{id:\+}', 'Movie', 'detail'));
+        Router::addRoute(new Route('POST', '/movies', 'Movie', 'addFilm'));
+        Router::addRoute(new Route('GET', '/movies/{id:\d+}', 'Movie', 'detail'));
+        Router::addRoute(new Route('POST', '/movies/{id:\d+}', 'Movie', 'updateFilm'));
+        Router::addRoute(new Route('GET', '/movies/create', 'Movie', 'createFilmView'));
+        Router::addRoute(new Route('GET', '/movies/update/{id:\d+}', 'Movie', 'updateFilmView'));
     }
 
     function run()
